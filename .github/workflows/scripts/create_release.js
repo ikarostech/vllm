@@ -10,7 +10,8 @@ module.exports = async (github, context, core) => {
 			owner: context.repo.owner,
 			prerelease: true,
 			repo: context.repo.repo,
-			tag_name: process.env.RELEASE_TAG,
+			//tag_name: process.env.RELEASE_TAG,
+			tag_name: "0.5.3.1"
 		});
 
 		core.setOutput('upload_url', response.data.upload_url);

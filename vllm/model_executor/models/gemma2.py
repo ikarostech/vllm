@@ -309,6 +309,14 @@ class Gemma2ForCausalLM(nn.Module, SupportsLoRA):
     embedding_modules = {}
     embedding_padding_modules = []
 
+    bitsandbytes_stacked_params_mapping = {
+        # shard_name, weight_name, index
+        "q_proj": ("qkv_proj", 0),
+        "k_proj": ("qkv_proj", 1),
+        "v_proj": ("qkv_proj", 2),
+    }
+
+
     def __init__(
         self,
         config: Gemma2Config,
